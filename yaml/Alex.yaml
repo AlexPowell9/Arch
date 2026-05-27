@@ -45,5 +45,6 @@ Factorio:
   priority_locations: []
   start_inventory:
     construction-robotics: 100
+    gun-turret: 50
     stone-wall: 500
   start_inventory_from_pool: {}
