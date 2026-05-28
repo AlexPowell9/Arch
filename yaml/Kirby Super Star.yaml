@@ -42,8 +42,8 @@ Kirby Super Star:
   ################
   death_link:
     # When you die, everyone who enabled death link dies. Of course, the reverse is true too.
-    'false': 50
-    'true': 0
+    'false': 0
+    'true': 20
 
   progression_balancing:
     # A system that can move progression earlier, to try and prevent the player from getting stuck and bored early.
