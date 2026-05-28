@@ -86,9 +86,9 @@ Hollow Knight:
   CostSanity: 'on'
   CostSanityHybridChance: '0'
   CostSanityEggWeight: '0'
-  CostSanityGrubWeight: '455'
-  CostSanityEssenceWeight: '85'
-  CostSanityCharmWeight: '256'
+  CostSanityGrubWeight: '500'
+  CostSanityEssenceWeight: '75'
+  CostSanityCharmWeight: '250'
   CostSanityGeoWeight: '0'
   local_items: []
   non_local_items: []
@@ -96,4 +96,6 @@ Hollow Knight:
   start_location_hints: []
   exclude_locations: []
   priority_locations: []
-  start_inventory: {}
+  start_inventory:
+   City_Crest: 1
+   Simple_Key: 4
