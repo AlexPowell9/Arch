@@ -1,0 +1,184 @@
+﻿# Q. What is this file?
+# A. This file contains options which allow you to configure your multiworld experience while allowing
+#    others to play how they want as well.
+#
+# Q. How do I use it?
+# A. The options in this file are weighted. This means the higher number you assign to a value, the
+#    more chances you have for that option to be chosen. For example, an option like this:
+#
+#    map_shuffle:
+#      on: 5
+#      off: 15
+#
+#    Means you have 5 chances for map shuffle to occur, and 15 chances for map shuffle to be turned
+#    off.
+#
+# Q. I've never seen a file like this before. What characters am I allowed to use?
+# A. This is a .yaml file. You are allowed to use most characters.
+#    To test if your yaml is valid or not, you can use this website:
+#        http://www.yamllint.com/
+#    You can also verify that your Archipelago options are valid at this site:
+#        https://archipelago.gg/check
+
+# Your name in-game, limited to 16 characters.
+#     {player} will be replaced with the player's slot number.
+#     {PLAYER} will be replaced with the player's slot number, if that slot number is greater than 1.
+#     {number} will be replaced with the counter value of the name.
+#     {NUMBER} will be replaced with the counter value of the name, if the counter value is greater than 1.
+name: Kia
+
+# Used to describe your yaml. Useful if you have multiple files.
+description: Default Monster Hunter Rise Template
+
+game: Monster Hunter Rise
+requires:
+  version: 0.6.7 # Version of Archipelago required for this yaml to work as expected.
+
+Monster Hunter Rise:
+  ################
+  # Game Options #
+  ################
+  progression_balancing:
+    # A system that can move progression earlier, to try and prevent the player from getting stuck and bored early.
+    # 
+    # A lower setting means more getting stuck. A higher setting means less getting stuck.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 99
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-0-99: 0 # random value between 0 and 99
+    disabled: 0 # equivalent to 0
+    normal: 50 # equivalent to 50
+    extreme: 0 # equivalent to 99
+
+  accessibility:
+    # Set rules for reachability of your items/locations.
+    # 
+    # **Full:** ensure everything can be reached and acquired.
+    # 
+    # **Minimal:** ensure what is needed to reach your goal can be acquired.
+    full: 0
+    minimal: 50
+
+  mode:
+    # Game mode.
+    # 
+    # - `hunt_a_thon` (default): hunting a large monster requires its
+    #   license. Licenses are scattered across the multiworld. Standard
+    #   hunt-for-keys loop.
+    # - `quest_rando`: each village quest's boss monster is randomly
+    #   swapped (within per-map compatibility). Clearing a quest sends
+    #   AP checks when the matching `Unlock: <quest>` and — if weapons
+    #   are enabled — the wielded weapon's license are held. Goal =
+    #   clearing the final village urgent "Comeuppance" (its boss stays
+    #   as the intended Magnamalo). MonsterCount is ignored in this
+    #   mode; the rest of the options apply.
+    hunt_a_thon: 0
+    quest_rando: 50
+
+  include_sunbreak:
+    # Include Sunbreak monsters (and their subspecies / Risen variants) in
+    # the world. When disabled, only base-game Rise monsters are randomized.
+    'false': 0
+    'true': 50
+
+  include_risen:
+    # Include Risen elder dragons (Anomaly Investigation endgame —
+    # Risen Kushala Daora, Chameleos, Teostra, Shagaru Magala, Crimson
+    # Glow Valstrax). Default off because they are post-credits / very
+    # high difficulty. Has no effect when Sunbreak is disabled.
+    'false': 50
+    'true': 0
+
+  include_weapons:
+    # Add weapon-type licenses to the pool. When enabled, weapon
+    # licenses fill the spare itempool slots; the player needs the
+    # license for their currently-equipped weapon to complete a hunt
+    # (HuntAThon) or send a quest-clear check (QuestRando). One random
+    # weapon license is always precollected. Applies to both modes.
+    'false': 0
+    'true': 50
+
+  weapon_pool:
+    # Restrict which weapon-type licenses are eligible for the pool
+    # (and for the precollected starter weapon). Defaults to all 14
+    # weapons. To play with a smaller set, list the weapon names you
+    # want — e.g.:
+    # 
+    #     weapon_pool:
+    #       - Long Sword
+    #       - Bow
+    #       - Switch Axe
+    # 
+    # Must contain at least one valid weapon name. Names are
+    # case-sensitive and must match the entries in `data/weapons.py`.
+    # No effect when `include_weapons` is disabled. Applies to both
+    # modes.
+    ['Hammer', 'Lance', 'Switch Axe', 'Hunting Horn', 'Heavy Bowgun', 'Charge Blade', 'Insect Glaive', 'Sword & Shield', 'Gunlance', 'Bow', 'Light Bowgun', 'Great Sword', 'Dual Blades', 'Long Sword']
+
+  randomize_quest_monsters:
+    # QuestRando only: when enabled (default), every pool quest's
+    # boss monster is randomly swapped (within per-map compatibility).
+    # When disabled, quests keep their vanilla boss — the rando reduces
+    # to gating clear checks on the per-quest `Unlock:` items without
+    # altering the in-game fight. No effect in HuntAThon.
+    'false': 0
+    'true': 50
+
+  monster_count:
+    # Number of monsters randomly drawn into the world. Determines how
+    # many hunts are randomized. Clamped to the available pool size at
+    # generation time (max 32 with Sunbreak off, 72 with Sunbreak on).
+    # Min 3 — at N=2 the spare-slot budget is too tight to fit weapon
+    # licenses without overrunning available locations.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 3
+    # Maximum value is 72
+    15: 50
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-3-72: 0 # random value between 3 and 72
+
+  ###########################
+  # Item & Location Options #
+  ###########################
+  local_items:
+    # Forces these items to be in their native world.
+    []
+
+  non_local_items:
+    # Forces these items to be outside their native world.
+    []
+
+  start_inventory:
+    # Start with the specified amount of these items. Example: "Bomb: 1"
+    {}
+
+  start_hints:
+    # Start with these item's locations prefilled into the ``!hint`` command.
+    []
+
+  start_location_hints:
+    # Start with these locations and their item prefilled into the ``!hint`` command.
+    []
+
+  exclude_locations:
+    # Prevent these locations from having an important item.
+    []
+
+  priority_locations:
+    # Prevent these locations from having an unimportant item.
+    []
+
+  item_links:
+    # Share part of your item pool with other players.
+    []
+
+  plando_items:
+    # Generic items plando.
+    []
