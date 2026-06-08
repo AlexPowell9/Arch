@@ -12,7 +12,7 @@ Terraria:
   grindy_achievements: 'false'
   fishing_achievements: 'false'
   fill_extra_checks_with: useful_items
-  death_link: 'false'
+  death_link: 'true'
   local_items: []
   non_local_items: []
   start_hints: []
